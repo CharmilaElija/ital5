@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Helena & Davi - 15.12.2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:'Montserrat',sans-serif;overflow-x:hidden}
+section{position:relative;width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.overlay{position:absolute;inset:0}
+
+/* EFEITO NOME DESENHANDO */
+.draw{font-family:'Great Vibes',cursive;font-size:58px;fill:none;stroke:white;stroke-width:1.2;stroke-dasharray:500;stroke-dashoffset:500;animation:write 3.5s ease forwards 0.8s}
+@keyframes write{to{stroke-dashoffset:0;fill:white}}
+
+/* EFEITO FOTO SOBREPOR AUTOMÁTICO */
+.conteudo-centro, .arco, .details-wrap, .wishes, .rsvp-title{
+  position:relative;z-index:3;
+  transform:translateY(100vh);opacity:0;
+  animation:surgir 1.3s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+@keyframes surgir{to{transform:translateY(0);opacity:1}}
+#tela2 .conteudo-centro{animation-delay:0.4s}
+#tela3 .arco{animation-delay:0.6s}
+#tela4 .details-wrap{animation-delay:0.5s}
+#tela5 .wishes{animation-delay:0.6s}
+#tela6 .rsvp-title{animation-delay:0.4s}
+#tela7 .final-text{animation:surgir 1.2s forwards 0.3s;transform:translateY(100vh);opacity:0}
+
+/* TELAS */
+#tela1 .bg{filter:grayscale(1)}
+.monograma{position:relative;z-index:2;text-align:center}
+.letras{font-family:'Cormorant Garamond',serif;font-size:110px;font-weight:300;letter-spacing:5px;line-height:1;color:white}
+.data{margin-top:10px;letter-spacing:5px;font-size:14px}
+.conteudo-centro{text-align:center;padding:30px;max-width:380px}
+.titulo-invited{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;letter-spacing:2px;margin-bottom:18px}
+.texto-pequeno{font-size:10px;letter-spacing:3px;line-height:1.8}
+.nome-grande{font-size:15px;letter-spacing:3px;margin:8px 0;font-weight:500}
+.and{font-family:'Great Vibes',cursive;font-size:30px;margin:5px 0}
+#tela3 .overlay{background:rgba(0,0,0,0.2)}
+.arco{background:rgba(156,130,113,0.88);width:90%;max-width:360px;border-radius:200px 200px 0 0;padding:45px 25px 40px;text-align:center}
+.arco h2{font-size:12px;letter-spacing:4px}
+.celebration{font-family:'Great Vibes',cursive;font-size:42px;margin:5px 0 30px;color:white}
+.linha-tempo{border-left:1px solid rgba(255,255,255,0.6);margin:0 auto;width:210px;text-align:left;padding-left:25px}
+.item-tempo{position:relative;margin-bottom:30px}
+.item-tempo::before{content:'';position:absolute;left:-31px;top:0;width:12px;height:12px;background:#D4AF37;border-radius:50%;border:2px solid #fff}
+.item-tempo b{display:block;font-size:10px;letter-spacing:2px}
+.item-tempo span{font-size:11px;letter-spacing:1px}
+#tela4{background:#EDE7E1;color:#5C4A3D}
+.details-wrap{width:90%;max-width:380px}
+.details-title{font-family:'Great Vibes',cursive;font-size:52px;color:#fff;position:absolute;top:-55px;left:10px;z-index:3;line-height:0.9}
+.card-detail{background:#fff;border-radius:12px;overflow:hidden;margin-bottom:12px;box-shadow:0 10px 25px rgba(0,0,0,0.15)}
+.card-detail img{width:100%;height:90px;object-fit:cover}
+.card-info{padding:15px;text-align:center;background:#7A6552;color:white}
+.card-info h4{font-size:10px;letter-spacing:3px;margin-bottom:6px}
+.card-info p{font-size:9px;line-height:1.6;letter-spacing:1px}
+.cores{display:flex;gap:6px;justify-content:center;margin-top:8px}
+.cores span{width:28px;height:40px;border-radius:20px;border:1px solid rgba(255,255,255,0.5)}
+#tela5 .overlay{background:rgba(0,0,0,0.55)}
+.wishes h2{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;letter-spacing:2px}
+.wishes .sub{font-family:'Great Vibes',cursive;font-size:28px;margin-bottom:20px}
+.wishes p{font-size:9px;letter-spacing:1.5px;line-height:1.8;margin-bottom:15px}
+.wishes .lojas{font-size:11px;letter-spacing:2px;line-height:1.9;font-weight:500}
+#tela6{background:#fff;color:#5C4A3D;flex-direction:column;min-height:90vh}
+#tela6 img.bg{border-radius:200px 200px 0 0;width:90%;height:70%;left:5%;top:25%;object-fit:cover}
+.rsvp-title{font-family:'Great Vibes',cursive;font-size:56px;color:#7A6552;margin:40px 0 10px}
+.rsvp-contato{font-size:11px;letter-spacing:2px;text-align:center;line-height:1.8;color:#7A6552;position:relative;z-index:2}
+#tela7 .bg{filter:grayscale(1)}
+.final-text{position:relative;z-index:2;text-align:center}
+.final-text h2{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:2px;font-weight:300;line-height:1.4}
+</style>
+</head>
+<body>
+
+<!-- TELA 1 - CAPA HD COM NOME DESENHANDO -->
+<section id="tela1">
+  <img src="IMG_0071.jpeg" class="bg">
+  <div class="overlay" style="background:rgba(0,0,0,0.35)"></div>
+  <div class="monograma">
+    <div class="letras">HD</div>
+    <svg width="300" height="80" viewBox="0 0 300 80"><text x="50%" y="55" text-anchor="middle" class="draw">Helena & Davi</text></svg>
+    <div class="data">15 . 12 . 2027</div>
+  </div>
+</section>
+
+<!-- TELA 2 - CONVITE -->
+<section id="tela2">
+  <img src="IMG_0072.jpeg" class="bg">
+  <div class="overlay" style="background:rgba(0,0,0,0.25)"></div>
+  <div class="conteudo-centro">
+    <div class="titulo-invited">VOCÊ FOI CONVIDADO!</div>
+    <div class="texto-pequeno">JUNTAMENTE COM SUAS FAMÍLIAS</div>
+    <div class="nome-grande">HELENA</div>
+    <div class="and">e</div>
+    <div class="nome-grande">DAVI</div>
+    <div class="texto-pequeno" style="margin-top:20px">CONVIDAM COM ALEGRIA VOCÊ PARA<br>CELEBRAR O SEU CASAMENTO</div>
+  </div>
+</section>
+
+<!-- TELA 3 - CELEBRAÇÃO COM ARCO -->
+<section id="tela3">
+  <img src="IMG_0071.jpeg" class="bg">
+  <div class="overlay"></div>
+  <div class="arco">
+    <h2>O CASAMENTO</h2>
+    <div class="celebration">Celebração</div>
+    <div class="linha-tempo">
+      <div class="item-tempo"><b>DATA:</b><span>15 DEZEMBRO 2027</span></div>
+      <div class="item-tempo"><b>CHEGADA:</b><span>16H00</span></div>
+      <div class="item-tempo"><b>INÍCIO:</b><span>17H30</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TELA 4 - DETALHES -->
+<section id="tela4">
+  <img src="IMG_0072.jpeg" class="bg" style="opacity:0.18">
+  <div class="details-wrap">
+    <div class="details-title">os<br>detalhes</div>
+    <div class="card-detail">
+      <img src="IMG_0071.jpeg">
+      <div class="card-info"><h4>LOCAL</h4><p>SALÃO / IGREJA<br>ENDEREÇO AQUI<br>CIDADE - PROVÍNCIA</p></div>
+    </div>
+    <div class="card-detail">
+      <div class="card-info"><h4>TEMA</h4><p>ELEGÂNCIA NEUTRA</p>
+        <div class="cores"><span style="background:#D8AFAF"></span><span style="background:#F2D5C5"></span><span style="background:#E8DDD0"></span><span style="background:#C9B09A"></span><span style="background:#D1B896"></span><span style="background:#EDE7E1"></span></div>
+      </div>
+    </div>
+    <div class="card-detail"><div class="card-info"><h4>TRAJE</h4><p>FORMAL<br>TRAJE DE GALA</p></div></div>
+  </div>
+</section>
+
+<!-- TELA 5 - PRESENTES -->
+<section id="tela5">
+  <img src="IMG_0072.jpeg" class="bg">
+  <div class="overlay"></div>
+  <div class="conteudo-centro wishes">
+    <h2>LISTA DE PRESENTES</h2>
+    <div class="sub">Pensando em presentes?</div>
+    <p>SUA PRESENÇA É O MAIOR PRESENTE, MAS SE QUISER NOS ABENÇOAR, ACEITAMOS COM CARINHO VOUCHERS DE:</p>
+    <div class="lojas">MPESA<br>VODACOM<br>MOVITEL<br>ENVELOPE</div>
+  </div>
+</section>
+
+<!-- TELA 6 - RSVP -->
+<section id="tela6">
+  <div class="rsvp-title">Confirme sua presença</div>
+  <div class="rsvp-contato">HELENA: 82 000 0000<br>OU PELO LINK COMPARTILHADO</div>
+  <img src="IMG_0071.jpeg" class="bg">
+</section>
+
+<!-- TELA 7 - FINAL -->
+<section id="tela7">
+  <img src="IMG_0072.jpeg" class="bg">
+  <div class="overlay" style="background:rgba(0,0,0,0.3)"></div>
+  <div class="final-text"><h2>MAL PODEMOS ESPERAR PARA<br>CELEBRAR COM VOCÊ!</h2></div>
+</section>
+
+</body>
+</html>
